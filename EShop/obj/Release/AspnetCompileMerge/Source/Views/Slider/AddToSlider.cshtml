@@ -1,0 +1,55 @@
+﻿@model EShop.Models.Slider
+@{
+    ViewBag.Title = "AddToSlider";
+}
+<section id="form" style="margin-top:30px">
+    <!--form-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="login-form">
+                    <!--login form-->
+                    <h2 style="text-align:center">Add To Slider</h2>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Content_Name, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Content_Name, new { placeholder = " Name Of Content ", style = "margin-left:90px" })
+                                @Html.ValidationMessageFor(m => m.Content_Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Content_Describtion, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(m => m.Content_Describtion , new { placeholder = " Describtion Of Content ", style = "margin-left:90px" , rows = "4"})
+                                @Html.ValidationMessageFor(m => m.Content_Describtion, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Content_Image, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                <input type="file" name="Content_Image" id="Content_Image" accept="image/*" style="margin-left:90px ; margin-top:10px" />
+                                @Html.ValidationMessageFor(m => m.Content_Describtion, "", new { @class = "text-danger"})
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="submit" class="btn btn-default">ADD To Slider</button>
+                            </div>
+                        </div>
+                    }
+                </div><!--/login form-->
+            </div>
+        </div>
+    </div>
+</section><!--/form-->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

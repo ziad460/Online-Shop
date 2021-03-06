@@ -1,0 +1,27 @@
+﻿@model List<EShop.Models.Slider>
+@{
+    ViewBag.Title = "SliderInformation";
+}
+
+<h2 style="text-align:center">Slider Information</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Content Name</th>
+        <td>Content Describtion</td>
+        <td>Content Image</td>
+        <td>Edite Contents</td>
+        <td>Delete Contents</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.Content_Name</td>
+        <td>@item.Content_Describtion</td>
+        <td>@item.Content_Image</td>
+        <td>@Html.ActionLink("Edite", "EditeInSlider", new { id = item.Slider_ID })</td>
+        <td>@Html.ActionLink("Delete", "DeleteFromSlider", new { id = item.Slider_ID })</td>
+    </tr>
+    }
+</table>
+

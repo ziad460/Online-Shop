@@ -1,0 +1,33 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<EShop.Models.Product>
+
+<div class="features_items">
+    <!--features_items-->
+    <h2 class="title text-center">Features Items</h2>
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-4">
+            <div class="product-image-wrapper">
+                <div class="single-products">
+                    <div class="productinfo text-center">
+                        <img src="../../Content/images/shop/@item.Product_Image" alt="" style="width:268px ; height:249px" />
+                        <h2>$@item.Product_Price</h2>
+                        <p>@item.Product_Name</p>
+                        @*<a href="/Order/CreateOrder/@item.Product_ID?username=@User.Identity.Name" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>*@
+                        <a href="/UserCart/@item.Product_ID?username=@User.Identity.Name" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                    </div>
+                </div>
+                <div class="choose">
+                    <ul class="nav nav-pills nav-justified">
+                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                        <li><a href="/Product/ProductDetails/@item.Product_ID"><i class="fa fa-plus-square"></i>Go To Details</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+    <ul class="pagination">
+        @Html.PagedListPager(Model , page => Url.Action("Index" , new { page = page}))
+    </ul>
+</div><!--features_items-->

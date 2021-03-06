@@ -1,0 +1,31 @@
+﻿@model List<EShop.Models.Product>
+@{
+    ViewBag.Title = "ProductInformation";
+}
+
+<h2 style="text-align:center">Products Information</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Product Name</th>
+        <td>Product Size</td>
+        <td>Product Color</td>
+        <td>Product Price</td>
+        <td>Edite Contents</td>
+        <td>Delete Contents</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.Product_Name</td>
+        <td>@item.Product_Size</td>
+        <td>@item.Product_Color</td>
+        <td>@item.Product_Price</td>
+        <td>@Html.ActionLink("Edite", "EditeInProduct", new { id = item.Product_ID })</td>
+        <td>@Html.ActionLink("Delete", "DeleteFromProduct", new { id = item.Product_ID })</td>
+    </tr>
+    }
+</table>
+
+
+

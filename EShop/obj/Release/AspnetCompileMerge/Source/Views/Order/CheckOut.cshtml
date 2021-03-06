@@ -1,0 +1,171 @@
+﻿@model EShop.Models.Order
+
+@{
+    ViewBag.Title = "CheckOut";
+}
+
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="/Home/Index">Home</a></li>
+                <li class="active">Shopping Cart</li>
+            </ol>
+        </div>
+        <div class="review-payment">
+            <h2>Review & Payment</h2>
+        </div>
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="cart_menu">
+                        <td class="image">Item</td>
+                        <td class="description"></td>
+                        <td class="price">Price</td>
+                        <td class="quantity">Quantity</td>
+                        <td class="total">Total</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OrderDetails)
+                    {
+                        <tr>
+                            <td class="cart_product">
+                                <a href="/Product/ProductDetails/@item.Product_ID">
+                                    <img src="../../Content/images/shop/@item.Product.Product_Image"
+                                         alt="" style="width:110px ; height:110px">
+                                </a>
+                            </td>
+
+                            <td class="cart_description">
+                                <h4><a href="/Product/ProductDetails/@item.Product_ID">@item.Product.Product_Short_Description</a></h4>
+                                <p>Web ID: @item.Product_ID</p>
+                            </td>
+
+                            <td class="cart_price">
+                                <p>$@item.Product_Price</p>
+                            </td>
+
+                            <td class="cart_price">
+                                <p>@item.Product_Sales_Quantity</p>
+                            </td>
+
+                            <td class="cart_total">
+                                <p class="cart_total_price">$@item.Total_price</p>
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="3">&nbsp;</td>
+                        <td colspan="2">
+                            <table class="table table-condensed total-result">
+                                <tr>
+                                    <td>Cart Sub Total</td>
+                                    <td>$@ViewBag.SubTotal</td>
+                                </tr>
+                                <tr>
+                                    <td>Exo Tax</td>
+                                    <td>$2.0</td>
+                                </tr>
+                                <tr class="shipping-cost">
+                                    <td>Shipping Cost</td>
+                                    <td>Free</td>
+                                </tr>
+                                <tr>
+                                    <td>Total</td>
+                                    <td><span>$@ViewBag.Total</span></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="payment-options">
+            <span>
+                <label><input type="checkbox"> HandCach </label>
+            </span>
+            <span>
+                <label><input type="checkbox"> Check Payment</label>
+            </span>
+            <span>
+                <label><input type="checkbox"> Paypal</label>
+            </span>
+        </div>
+
+        <div class="shopper-informations">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="shopper-info">
+                        <p>Shopper Information</p>
+                        <form>
+                            <input type="text" placeholder="Display Name">
+                            <input type="text" placeholder="User Name">
+                            <input type="password" placeholder="Password">
+                            <input type="password" placeholder="Confirm password">
+                        </form>
+                        @*<a class="btn btn-primary" href="">Continue</a>*@
+                        @Ajax.ActionLink("Continu" , "OrderDone" , "Order" , null ,
+                        new AjaxOptions { UpdateTargetId = "OrderDone" } ,
+                        new { @class = "btn btn-primary" })
+                        <div style="margin-top:10px">
+                            <p id="OrderDone"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5 clearfix">
+                    <div class="bill-to">
+                        <p>Bill To</p>
+                        <div class="form-one">
+                            <form>
+                                <input type="text" placeholder="Email*">
+                                <input type="text" placeholder="First Name *">
+                                <input type="text" placeholder="Middle Name">
+                                <input type="text" placeholder="Last Name *">
+                                <input type="text" placeholder="Address 1 *">
+                                <input type="text" placeholder="Address 2">
+                            </form>
+                        </div>
+                        <div class="form-two">
+                            <form>
+                                <input type="text" placeholder="Zip / Postal Code *">
+                                <select>
+                                    <option>-- Country --</option>
+                                    <option selected>@Model.Shipping.Shipping_Address.Country</option>
+                                    <option>Uninted States</option>
+                                    <option>Saudia Arabia</option>
+                                    <option>Tunisia</option>
+                                    <option>Algerie</option>
+                                    <option>Emarites</option>
+                                </select>
+                                <select>
+                                    <option>-- State / Province / Region --</option>
+                                    <option selected>Cairo</option>
+                                    <option>Calefornia</option>
+                                    <option>Al Riad</option>
+                                    <option>Algerie</option>
+                                    <option>Dubai</option>
+                                </select>
+                                <input type="password" placeholder="Confirm password">
+                                <input type="text" placeholder="Phone *">
+                                <input type="text" placeholder="Fax">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="order-message">
+                        <p>Shipping Order</p>
+                        <textarea name="message" placeholder="Notes about your order, Special Notes for Delivery" rows="16"></textarea>
+                        <label><input type="checkbox"> Shipping to bill address</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section> <!--/#cart_items-->
+@section scripts
+{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}

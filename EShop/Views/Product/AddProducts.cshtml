@@ -1,0 +1,94 @@
+﻿@model EShop.Models.Product
+
+@{
+    ViewBag.Title = "AddProducts";
+}
+
+<section id="form" style="margin-top:30px">
+    <!--form-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="login-form">
+                    <!--login form-->
+                    <h2 style="text-align:center">Add To Products</h2>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Product_Name, new { placeholder = " Name Of Content "})
+                                @Html.ValidationMessageFor(m => m.Product_Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(m => m.Product_Size, new SelectList(ViewBag.Sizes), new { style = " margin-bottom:10px"})
+                                @Html.ValidationMessageFor(m => m.Product_Size, "", new { @class = "text-danger" })
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Product_Color, new { placeholder = " Color ", style = " margin-bottom:10px" })
+                                @Html.ValidationMessageFor(m => m.Product_Color, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Product_Price, new { placeholder = " Price ", style = " margin-bottom:10px" })
+                                @Html.ValidationMessageFor(m => m.Product_Price, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(m => m.Product_Short_Description, new { placeholder = " Short Describtion Of Content ", style = "margin-bottom:10px", rows = "4" })
+                                @Html.ValidationMessageFor(m => m.Product_Short_Description, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(m => m.Product_Long_Description, new { placeholder = " Long Describtion Of Content ", style = "margin-bottom:10px", rows = "4" })
+                                @Html.ValidationMessageFor(m => m.Product_Long_Description, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(m => m.Category_ID, new SelectList(ViewBag.Categories, "Category_ID", "Category_Name"), new { style = " margin-bottom:10px" })
+                                @Html.ValidationMessageFor(m => m.Category_ID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(m => m.Manufacture_ID, new SelectList(ViewBag.Manufacturers, "Manufacture_ID", "Manufacture_Name"))
+                                @Html.ValidationMessageFor(m => m.Manufacture_ID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <input type="file" name="Product_Image" id="Product_Image" accept="image/*" style="margin-top:10px" />
+                                @Html.ValidationMessageFor(m => m.Product_Image, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="submit" class="btn btn-default">ADD Product</button>
+                            </div>
+                        </div>
+                    }
+                </div><!--/login form-->
+            </div>
+        </div>
+    </div>
+</section><!--/form-->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
