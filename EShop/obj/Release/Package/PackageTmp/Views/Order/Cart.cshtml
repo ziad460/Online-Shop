@@ -82,7 +82,10 @@
                         <li>Shipping Cost <span>Free</span></li>
                         <li>Total <span>$@ViewBag.Total</span></li>
                     </ul>
-                    <a class="btn btn-default check_out" href="/CheckOutOrder/@Model.Order_ID">Check Out</a>
+                    @if (ViewBag.SubTotal != 0)
+                    {
+                        <a class="btn btn-default check_out" href="/CheckOutOrder/@Model.Order_ID">Check Out</a>
+                    }
                 </div>
             </div>
         </div>

@@ -1,0 +1,109 @@
+﻿<div class="category-tab">
+    <!--category-tab-->
+    <div class="col-sm-12">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#wintercollection" data-toggle="tab">Winter-Collection</a></li>
+            <li><a href="#tshirt" data-toggle="tab">T-Shirt</a></li>
+            <li><a href="#sunglasses" data-toggle="tab">Sun-Glasses</a></li>
+            <li><a href="#hijaboutfit" data-toggle="tab">Hijab Outfit</a></li>
+            <li><a href="#dresses" data-toggle="tab">Dresses</a></li>
+        </ul>
+    </div>
+    <div class="tab-content">
+
+        <div class="tab-pane fade active in" id="wintercollection">
+            @foreach (var item in ViewBag.WinterCollection)
+            {
+                <div class="col-sm-3">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="../../Content/images/Shop/@item.Product_Image" alt=""
+                                     style="width:207px ; height:183px" />
+                                <h2>$@item.Product_Price</h2>
+                                <p>@item.Product_Name</p>
+                                <a href="/UserCart/@item.Product_ID?username=@User.Identity.Name" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="tab-pane fade" id="tshirt">
+            @foreach (var item in ViewBag.TShirts)
+            {
+                <div class="col-sm-3">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="../../Content/images/Shop/@item.Product_Image" alt=""
+                                     style="width:207px ; height:183px" />
+                                <h2>$@item.Product_Price</h2>
+                                <p>@item.Product_Name</p>
+                                <a href="/UserCart/@item.Product_ID?username=@User.Identity.Name" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="tab-pane fade" id="sunglasses">
+            @foreach (var item in ViewBag.SunGlasses)
+            {
+                <div class="col-sm-3">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="../../Content/images/Shop/@item.Product_Image" alt=""
+                                     style="width:207px ; height:183px" />
+                                <h2>$@item.Product_Price</h2>
+                                <p>@item.Product_Name</p>
+                                <a href="/UserCart/@item.Product_ID?username=@User.Identity.Name" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="tab-pane fade" id="hijaboutfit">
+            @foreach (var item in ViewBag.IslamicOutfit)
+            {
+                <div class="col-sm-3">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="../../Content/images/Shop/@item.Product_Image" alt=""
+                                     style="width:207px ; height:183px" />
+                                <h2>$@item.Product_Price</h2>
+                                <p>@item.Product_Name</p>
+                                <a href="/UserCart/@item.Product_ID?username=@User.Identity.Name" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="tab-pane fade" id="dresses">
+            @foreach (var item in ViewBag.MiniDress)
+            {
+                <div class="col-sm-3">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="../../Content/images/Shop/@item.Product_Image" alt=""
+                                     style="width:207px ; height:183px" />
+                                <h2>$@item.Product_Price</h2>
+                                <p>@item.Product_Name</p>
+                                <a href="/UserCart/@item.Product_ID?username=@User.Identity.Name" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div><!--/category-tab-->

@@ -14,7 +14,6 @@
                         <img src="../../Content/images/shop/@item.Product_Image" alt="" style="width:268px ; height:249px" />
                         <h2>$@item.Product_Price</h2>
                         <p>@item.Product_Name</p>
-                        @*<a href="/Order/CreateOrder/@item.Product_ID?username=@User.Identity.Name" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>*@
                         <a href="/UserCart/@item.Product_ID?username=@User.Identity.Name" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                     </div>
                 </div>
